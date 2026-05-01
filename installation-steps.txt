@@ -70,3 +70,5 @@ minikube start
 # add this entry on .bashrc file
 alias kubectl="minikube kubectl --"
 
+# to stop the minikube 
+minikube stop
