@@ -1,0 +1,72 @@
+Installing kubernetes installation steps on ubuntu 22.04 LTS
+
+first install docker
+Installation steps for Docker on ubuntu 22.04
+
+✅ 1. Check if the docker already installed:
+docker version
+docker-compose -v
+
+✅ 2. Add Docker official repo
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+
+sudo install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod 644 /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+✅ 3. Add repo source
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu jammy stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+✅ 4. Update package list
+sudo apt update
+
+🔍 5. Check available versions
+apt list -a docker-ce
+Look for something like:
+docker-ce 5:28.2.2-1~ubuntu.22.04~jammy
+
+✅ 6. Install EXACT version
+sudo apt install -y \
+docker-ce=5:28.2.2-1~ubuntu.22.04~jammy \
+docker-ce-cli=5:28.2.2-1~ubuntu.22.04~jammy \
+# not required folling 
+containerd.io \
+docker-buildx-plugin
+
+✅ 7. Verify
+docker version
+
+✅ 8. Fix permission (important)
+sudo usermod -aG docker $USER
+newgrp docker
+
+🚀 Optional: prevent auto-upgrade
+sudo apt-mark hold docker-ce docker-ce-cli
+
+
+To install docker compose:
+
+sudo curl -L https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose version
+
+Install kubernetes:
+ -installation of minikube
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+
+minikube start
+
+# add this entry on .bashrc file
+alias kubectl="minikube kubectl --"
+
