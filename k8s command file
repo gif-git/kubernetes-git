@@ -1,0 +1,5 @@
+Command:
+
+kubectl apply main.yaml    
+kubectl get pods
+kubectl describe pod secondpod
