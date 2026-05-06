@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysecondpod
+spec:
+  containers:
+  - name: cont1
+    images: httpd
+    ports:
+    - containerPort: 80  
+  - name: cont2
+    images: jenkins/jenkins
+    ports:
+    - containerPort: 8080   
