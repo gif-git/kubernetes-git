@@ -1,0 +1,10 @@
+Q: What happens if a pod crashes?
+Answer:
+The Deployment controller notices the replica count is below the desired state and automatically creates a new pod.
+
+Q: What happens if a Kubernetes pod crashes?
+Answer:
+A Deployment manages a ReplicaSet. 
+The ReplicaSet continuously compares the desired number of replicas with the actual number of running pods. 
+If a pod is deleted or crashes, 
+Kubernetes automatically creates a replacement pod to maintain the desired state.
