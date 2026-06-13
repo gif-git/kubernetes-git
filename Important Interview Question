@@ -8,3 +8,9 @@ A Deployment manages a ReplicaSet.
 The ReplicaSet continuously compares the desired number of replicas with the actual number of running pods. 
 If a pod is deleted or crashes, 
 Kubernetes automatically creates a replacement pod to maintain the desired state.
+
+Q: What is service? 
+Answer:
+Service (svc) is a Kubernetes object that exposes one or more Pods through a stable IP address and DNS name. 
+Since Pod IPs can change when Pods are recreated, 
+a Service acts as a permanent endpoint and load balances traffic across healthy Pods.
