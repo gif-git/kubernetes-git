@@ -3,3 +3,16 @@ Command:
 kubectl apply main.yaml    
 kubectl get pods
 kubectl describe pod secondpod
+
+
+Useful Daily Kubernetes Commands
+kubectl get all
+kubectl get pods -o wide
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+kubectl exec -it <pod-name> -- bash
+kubectl delete pod <pod-name>
+kubectl scale deployment nginx --replicas=5
+kubectl rollout status deployment/nginx
+kubectl rollout history deployment/nginx
+kubectl rollout undo deployment/nginx
