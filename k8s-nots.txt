@@ -1,0 +1,44 @@
+
+What is Kubernetes?
+  - Kubernetes is a orchestration tool
+  - Container Orchestration Tool
+kubernetes automatically manages containers
+Scale up
+Self healing / Auto Self healing
+
+Kubernetes Architecture:
+kubernetes have two nodes they are:
+  - Master Node 
+  - worker node
+
+Contaners are created on the worker node
+
+Master Node:
+  - API Server (Every Communicatiohn is done through API Server)
+  - Controller Manager (Maintain State of Containers) Maintains the state by comparing
+    - 1, Desire State (How many containers do i like to have?)
+    - 2, Actual State
+
+How does he know about the Desite state? ETCD will maintained the record
+  - ETCD is a Database
+    - The desire state of the container simply Byte is 2
+    - The image name is sysadmin/calculator
+    - This container runs in port 8080
+
+  - Scheduler
+    - Decsides in which node the container should be created
+
+Who will create the container? Kublet
+Kublet is stays in all nodes
+  Kublet have two works, they are
+    - create the container
+    - kublet will inform to container runtime
+
+(CRI) Container runtime will performs
+    - pulling the images
+    - running the container
+    - removing the container
+  - this performance done by container runtime
+
+
+    - 2,  
